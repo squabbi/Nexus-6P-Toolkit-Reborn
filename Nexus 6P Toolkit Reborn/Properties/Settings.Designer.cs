@@ -22,5 +22,41 @@ namespace Nexus_6P_Toolkit_Reborn.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UpdateIsBeta {
+            get {
+                return ((bool)(this["UpdateIsBeta"]));
+            }
+            set {
+                this["UpdateIsBeta"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CustomChannel {
+            get {
+                return ((bool)(this["CustomChannel"]));
+            }
+            set {
+                this["CustomChannel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CustomChannelUri {
+            get {
+                return ((string)(this["CustomChannelUri"]));
+            }
+            set {
+                this["CustomChannelUri"] = value;
+            }
+        }
     }
 }

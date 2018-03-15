@@ -13,5 +13,14 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
     <Grid>
+        <GroupBox Header="Magisk" HorizontalAlignment="Left" Height="160" Margin="10,10,0,0" VerticalAlignment="Top" Width="238">
+            <Grid>
+                <Button x:Name="btn_installMagisk" Content="Install" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="201"/>
+                <Label Content="Channel:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top"/>
+                <Label Content="Version:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblk_magiskChannel" HorizontalAlignment="Left" Margin="81,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
+                <TextBlock x:Name="tblk_magiskVersion" HorizontalAlignment="Left" Margin="81,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

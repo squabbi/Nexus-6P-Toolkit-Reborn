@@ -15,7 +15,7 @@ namespace Nexus_6P_Toolkit_Reborn
     /// </summary>
     public partial class MainWindow : Window
     {
-        public const string MagiskUpdateStable = "https://raw.githubusercontent.com/topjohnwu/MagiskManager/update/stable.json0";
+        public const string MagiskUpdateStable = "https://raw.githubusercontent.com/topjohnwu/MagiskManager/update/stable.json";
         public const string MagiskUpdateBeta = "https://raw.githubusercontent.com/topjohnwu/MagiskManager/update/beta.json";
         public Magisk magisk;
         public MagiskManager magiskManager;
@@ -50,7 +50,7 @@ namespace Nexus_6P_Toolkit_Reborn
             return MagiskUpdateBeta;
         }
 
-        public async void RefreshMagiskInfo()
+        public void RefreshMagiskInfo()
         {
             //disable action button upon refresh
             this.btn_installMagisk.IsEnabled = false;

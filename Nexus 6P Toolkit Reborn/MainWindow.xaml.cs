@@ -83,5 +83,10 @@ namespace Nexus_6P_Toolkit_Reborn
         {
             RefreshMagiskInfo();        //update Magisk info on startup
         }
+
+        private void btn_magiskChangelog_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(magisk.Note);
+        }
     }
 }

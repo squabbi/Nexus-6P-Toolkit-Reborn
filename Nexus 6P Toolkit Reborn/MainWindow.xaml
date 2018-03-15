@@ -7,15 +7,33 @@
         x:Class="Nexus_6P_Toolkit_Reborn.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
-    <Grid>
-        <GroupBox Header="Magisk" HorizontalAlignment="Left" Height="160" Margin="10,10,0,0" VerticalAlignment="Top" Width="238">
-            <Grid>
-                <Button x:Name="btn_installMagisk" Content="Install" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="201"/>
-                <Label Content="Channel:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top"/>
-                <Label Content="Version:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tblk_magiskChannel" HorizontalAlignment="Left" Margin="81,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
-                <TextBlock x:Name="tblk_magiskVersion" HorizontalAlignment="Left" Margin="81,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
-            </Grid>
-        </GroupBox>
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Height="18">
+            <MenuItem Header="File">
+                <MenuItem Header="Check for Updates"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+        </Menu>
+        <TabControl DockPanel.Dock="Bottom">
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5">
+                    <GroupBox Header="Magisk" HorizontalAlignment="Left" Height="253" Margin="10,10,0,0" VerticalAlignment="Top" Width="172">
+                        <Grid>
+                            <Button x:Name="btn_installMagisk" Content="Install" HorizontalAlignment="Left" Margin="90,52,0,0" VerticalAlignment="Top" Width="59"/>
+                            <TextBlock x:Name="tblk_magiskChannel" HorizontalAlignment="Left" Margin="61,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+                            <TextBlock x:Name="tblk_magiskVersion" HorizontalAlignment="Left" Margin="61,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Channel:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top"/>
+                            <Button x:Name="btn_magiskChangelog" Content="Changelog" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Width="75" Click="btn_magiskChangelog_Click"/>
+                            <Label Content="Magisk Manager" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
 </Window>

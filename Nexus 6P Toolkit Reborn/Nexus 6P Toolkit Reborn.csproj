@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AndroidCtrl">
-      <HintPath>..\..\..\Libraries\AndroidCtrl\2018-02-15.1643\AndroidCtrl.dll</HintPath>
+      <HintPath>Resources\Library\AndroidCtrl.dll</HintPath>
     </Reference>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>

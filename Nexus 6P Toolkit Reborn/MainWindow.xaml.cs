@@ -99,6 +99,7 @@ namespace Nexus_6P_Toolkit_Reborn
                 {
                     // here goes the add command ;)
                     deviceselector.Items.Add(device);
+                    ConsoleAppend(String.Format("Device connected: {0} ({1}), State: {2}.", device.Model, device.Serial.ToString(), device.State.ToString()));
                 });
             }
             foreach (DataModelDevicesItem device in fastbootDevices)
@@ -106,6 +107,7 @@ namespace Nexus_6P_Toolkit_Reborn
                 App.Current.Dispatcher.Invoke((Action)delegate
                 {
                     deviceselector.Items.Add(device);
+                    ConsoleAppend(String.Format("Device connected: {0} ({1}), State: {2}.", device.Model, device.Serial.ToString(), device.State.ToString()));
                 });
             }
             if (deviceselector.Items.Count != 0)
@@ -140,7 +142,6 @@ namespace Nexus_6P_Toolkit_Reborn
         private void DeviceDetectionService()
         {
             ADB.Start();
-
             // Here we initiate the BASE Fastboot instance
             Fastboot.Instance();
 
@@ -157,23 +158,15 @@ namespace Nexus_6P_Toolkit_Reborn
                     SetDeviceList();
 
                     //This will starte a thread which checks every 10 sec for connected devices and call the given callback
-                    if (ADB.ConnectionMonitor.Start())
-                    {
-                        //Here we define our callback function which will be raised if a device connects or disconnects
-                        ADB.ConnectionMonitor.Callback += ConnectionMonitorCallback;
-                    }
+                    if (ADB.ConnectionMonitor.Start()) { ADB.ConnectionMonitor.Callback += ConnectionMonitorCallback; }
+                    //Here we define our callback function which will be raised if a device connects or disconnects
                 }
             }
         }
 
         public void ConnectionMonitorCallback(object sender, ConnectionMonitorArgs e)
         {
-            App.Current.Dispatcher.Invoke((Action)delegate
-            {
-                // Do what u want with the "List<DataModelDevicesItem> e.Devices"
-                // The "sender" is a "string" and returns "adb" or "fastboot"
-                SetDeviceList();
-            });
+            App.Current.Dispatcher.Invoke((Action)delegate { SetDeviceList(); });
         }
 
         private void SelectDeviceInstance(object sender, SelectionChangedEventArgs e)
@@ -181,11 +174,23 @@ namespace Nexus_6P_Toolkit_Reborn
             if (deviceselector.Items.Count != 0)
             {
                 DataModelDevicesItem device = (DataModelDevicesItem)deviceselector.SelectedItem;
-
                 // This will select the given device in the Fastboot and ADB class
                 Fastboot.SelectDevice(device.Serial);
                 ADB.SelectDevice(device.Serial);
             }
+        }
+
+        public void CheckandDeploy()
+        {
+            if (ADB.IntegrityCheck() == false) { Deploy.ADB(); }
+            if (Fastboot.IntegrityCheck() == false) { Deploy.Fastboot(); }
+            // Check if ADB is running
+            if (ADB.IsStarted)
+            {
+                ADB.Stop();             // Stop ADB
+                ADB.Stop(true);         // Force Stop ADB
+            }
+            else { ADB.Start(); }       // Start ADB
         }
 
         #endregion
@@ -216,18 +221,16 @@ namespace Nexus_6P_Toolkit_Reborn
             return MagiskUpdateBeta;
         }
 
-        public void RefreshMagiskInfo()
+        public void RefreshMagisk()
         {
             //disable action button upon refresh
-            this.btn_installMagisk.IsEnabled = false;
-            this.btn_installMagisk.Content = "Checking...";
+            this.Btn_installMagisk.IsEnabled = false;
+            this.Btn_installMagisk.Content = "Checking...";
 
             String jsonString;
 
-            using (WebClient webClient = new WebClient())
-            {
-                jsonString = webClient.DownloadString(UpdateChannel());     //grab json from topjohnwu's repo, depending on stable/beta/custom
-            }
+            using (WebClient webClient = new WebClient()) { jsonString = webClient.DownloadString(UpdateChannel()); }
+                                                                            //grab json from topjohnwu's repo, depending on stable/beta/custom
 
             JToken root = JObject.Parse(jsonString);
             JToken _magisk = root["magisk"];                                 //get the objects for the 'magisk' token
@@ -237,25 +240,48 @@ namespace Nexus_6P_Toolkit_Reborn
 
             //update visual items
             if (Properties.Settings.Default.UpdateIsBeta == false)
-                tblk_magiskChannel.Text = "Stable";
-            else tblk_magiskChannel.Text = "Beta";
+                Tblk_magiskChannel.Text = "Stable";
+            else Tblk_magiskChannel.Text = "Beta";
 
-            tblk_magiskVersion.Text = magisk.Version;
-            btn_installMagisk.IsEnabled = true;
-            btn_installMagisk.Content = "Install";
+            Tblk_magiskManagerVersion.Text = magiskManager.Version;
+
+            Tblk_magiskVersion.Text = magisk.Version;
+            Btn_installMagisk.IsEnabled = true;
+            Btn_installMagisk.Content = "Install";
+        }
+
+        #endregion
+
+        #region Indicators
+
+        private void statusProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ConsoleAppend(string.Format("{0}% completed...", statusProgress.Value.ToString()));
         }
 
         #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RefreshMagiskInfo();        //update Magisk info on startup
+            RefreshMagisk();            //update Magisk info on startup
+            CheckandDeploy();           //check and deploy Platform Tools
             DeviceDetectionService();   //start device detection monitor
         }
 
         private void Btn_magiskChangelog_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(magisk.Note);
+        }
+
+        private void hyLink_unlockBootloaderTip_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ADB.Dispose();
+            Fastboot.Dispose();
         }
     }
 }

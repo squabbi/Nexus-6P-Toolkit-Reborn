@@ -9,8 +9,8 @@
         x:Class="Nexus_6P_Toolkit_Reborn.MainWindow"
         mc:Ignorable="d"
         BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
-        Height="624" Width="645.175" FontWeight="Light" TitleCaps="False" EnableDWMDropShadow="True"
-        Title="MainWindow" Loaded="Window_Loaded">
+        Height="624" Width="639" FontWeight="Light" TitleCaps="False" EnableDWMDropShadow="True"
+        Title="Squabbi's Nexus 6P Toolkit Reborn - 2.0.0-0" Loaded="Window_Loaded" Closing="MetroWindow_Closing" ResizeMode="CanMinimize">
     <Window.Resources>
         <ResourceDictionary>
             <System:String x:Key="page_adb_deviceselector_state">Status:</System:String>
@@ -25,7 +25,7 @@
     <Grid x:Name="mainwGrid">
         <Menu x:Name="menu" VerticalAlignment="Top">
             <MenuItem x:Name="menuFile" Header="File">
-                <MenuItem x:Name="menuCheckforUpdates" Header="Check for Updates..." Click="menuCheckforUpdates_Click">
+                <MenuItem x:Name="menuCheckforUpdates" Header="Check for Updates..." >
                     <MenuItem.Icon>
                         <Image Source="Resources/refresh-32.png"/>
                     </MenuItem.Icon>
@@ -36,42 +36,42 @@
                         <Image Source="Resources/help-32.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="xdaThread" Header="Open Toolkit Thread" Click="xdaThread_Click"/>
-                <MenuItem x:Name="openDataFolder" Header="Open Data Folder" Click="openDataFolder_Click"/>
+                <MenuItem x:Name="xdaThread" Header="Open Toolkit Thread" />
+                <MenuItem x:Name="openDataFolder" Header="Open Data Folder" />
                 <Separator/>
-                <MenuItem x:Name="installDrivers" Header="Install Nexus USB Drivers" Click="installDrivers_Click">
+                <MenuItem x:Name="installDrivers" Header="Install Nexus USB Drivers" >
                     <MenuItem.Icon>
                         <Image Source="Resources/software_installer-32.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="linkDeviceManager" Header="Open Device Manager" Click="linkDeviceManager_Click">
+                <MenuItem x:Name="linkDeviceManager" Header="Open Device Manager">
                     <MenuItem.Icon>
                         <Image Source="Resources/device_manager-32.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="saveLog" Header="Save Log (Output)" Click="saveLog_Click"></MenuItem>
+                <MenuItem x:Name="saveLog" Header="Save Log (Output)" ></MenuItem>
                 <Separator/>
-                <MenuItem x:Name="showProxySettings" Header="Proxy Settings" Click="showProxySettings_Click" IsEnabled="False"/>
-                <MenuItem x:Name="linkExit" Header="Exit" Click="linkExit_Click">
+                <MenuItem x:Name="showProxySettings" Header="Proxy Settings"  IsEnabled="False"/>
+                <MenuItem x:Name="linkExit" Header="Exit" >
                     <MenuItem.Icon>
                         <Image Source="Resources/exit_sign-32.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="ADB">
-                <MenuItem x:Name="adbVersion" Header="Version" Click="adbVersion_Click">
+                <MenuItem x:Name="adbVersion" Header="Version" >
                     <MenuItem.Icon>
                         <Image Source="Resources/help-32.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="adbSideload" Header="Sideload" Click="adbSideload_Click">
+                <MenuItem x:Name="adbSideload" Header="Sideload" >
                     <MenuItem.Icon>
                         <Image Source="Resources/upload-32.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="adbAPK" Header="Install APK(s)" Click="adbAPK_Click">
+                <MenuItem x:Name="adbAPK" Header="Install APK(s)">
                     <MenuItem.Icon>
                         <Image Source="Resources/software_installer-32.png"/>
                     </MenuItem.Icon>
@@ -80,17 +80,17 @@
                     <MenuItem.Icon>
                         <Image Source="Resources/refresh-32.png"/>
                     </MenuItem.Icon>
-                    <MenuItem x:Name="adbRebootReboot" Header="Reboot to Android" Click="adbRebootReboot_Click">
+                    <MenuItem x:Name="adbRebootReboot" Header="Reboot to Android">
                         <MenuItem.Icon>
                             <Image Source="Resources/android_OS_copyrighted-32.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="adbRebootBootloader" Header="Reboot to Bootloader" Click="adbRebootBootloader_Click">
+                    <MenuItem x:Name="adbRebootBootloader" Header="Reboot to Bootloader" >
                         <MenuItem.Icon>
                             <Image Source="Resources/smartphone_RAM-32.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="adbRebootRecovery" Header="Reboot to Recovery" Click="adbRebootRecovery_Click">
+                    <MenuItem x:Name="adbRebootRecovery" Header="Reboot to Recovery" >
                         <MenuItem.Icon>
                             <Image Source="Resources/restart-32.png"/>
                         </MenuItem.Icon>
@@ -102,12 +102,12 @@
                     <MenuItem.Icon>
                         <Image Source="Resources/refresh-32.png"></Image>
                     </MenuItem.Icon>
-                    <MenuItem x:Name="fbtRebootReboot" Header="Reboot to Android" Click="fbtRebootReboot_Click">
+                    <MenuItem x:Name="fbtRebootReboot" Header="Reboot to Android">
                         <MenuItem.Icon>
                             <Image Source="Resources/android_OS_copyrighted-32.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="fbtRebootBootloader" Header="Reboot to Bootloader" Click="fbtRebootBootloader_Click">
+                    <MenuItem x:Name="fbtRebootBootloader" Header="Reboot to Bootloader" >
                         <MenuItem.Icon>
                             <Image Source="Resources/smartphone_RAM-32.png"/>
                         </MenuItem.Icon>
@@ -115,8 +115,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem x:Name="menuHelp" Header="Help">
-                <MenuItem x:Name="menuAbout" Header="About" Click="menuAbout_Click" ToolTip="Shows information about the toolkit."/>
-                <MenuItem x:Name="menuResetListVersion" Header="Reset List Version Counter" ToolTip="Resets counter to 0 to download the latest version of the toolkit lists." Click="menuResetListVersion_Click"/>
+                <MenuItem x:Name="menuAbout" Header="About" ToolTip="Shows information about the toolkit."/>
             </MenuItem>
 
         </Menu>
@@ -132,12 +131,10 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <ProgressBar x:Name="statusProgress" Margin="10,445,0,0" VerticalAlignment="Top" ValueChanged="statusProgress_ValueChanged" MouseDoubleClick="statusProgress_MouseDoubleClick" HorizontalAlignment="Left" Width="613"/>
+        <ProgressBar x:Name="statusProgress" Margin="10,445,0,0" VerticalAlignment="Top" ValueChanged="statusProgress_ValueChanged" HorizontalAlignment="Left" Width="613"/>
         <TabControl x:Name="tabControl" Controls:TabControlHelper.IsUnderlined="True" HorizontalAlignment="Left" Height="387" Margin="10,53,0,0" VerticalAlignment="Top" Width="613" SelectedIndex="1">
             <TabItem Header="Root">
                 <Grid>
-                    <Button x:Name="button" Content="Head over to the Unlocking and Rooting tab!" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="328" Click="button_Click"/>
-                    <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Hey guys! Don't mind this area, I'm just working on a automated root process to put here. :)" VerticalAlignment="Top" Height="31" Width="278"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Unlocking &amp; Rooting">
@@ -147,28 +144,31 @@
                     </Grid.ColumnDefinitions>
                     <GroupBox x:Name="groupBox2" Header="1. Unlock the Bootloader" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="139" Width="294">
                         <Grid>
-                            <Button  x:Name="unlockBootloader" Content="Unlock the Bootloader" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="256" Click="unlockBootloader_Click" ToolTip="This will erase everything in the internal storage."/>
-                            <TextBlock TextWrapping="WrapWithOverflow" Margin="10,0,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262"><Hyperlink Click="howEnableOEMUnlock_Click"><Run Text="Click here to find out how to enable OEM Unlock in the Developer Options,"/></Hyperlink><Run Text=" once that's done you're ready to "/><Run Text="unlock the bootloader."/></TextBlock>
+                            <Button  x:Name="unlockBootloader" Content="Unlock the Bootloader" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="256"  ToolTip="This will erase everything in the internal storage."/>
+                            <TextBlock TextWrapping="WrapWithOverflow" Margin="10,0,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262"><Hyperlink Name="hyLink_unlockBootloaderTip" Click="hyLink_unlockBootloaderTip_Click"><Run Text="Click here to find out how to enable OEM Unlock in the Developer Options,"/></Hyperlink><Run Text=" once that's done you're ready to "/><Run Text="unlock the bootloader."/></TextBlock>
                         </Grid>
                     </GroupBox>
                     <GroupBox x:Name="groupBox4" Header="2. Flash/Boot TWRP" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="143" Width="294">
                         <Grid>
-                            <Button x:Name="Btn_flashTWRP" Content="Flash TWRP" HorizontalAlignment="Left" Margin="133,55,0,0" VerticalAlignment="Top" Width="139" Click="flashTWRP_Click" ToolTip="Flashes TWRP to your phone."/>
-                            <ComboBox x:Name="twrpBuildList" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top" Width="263" ToolTip="Select the version of TWRP to flash." SelectionChanged="twrpBuildList_SelectionChanged">
-                                <ComboBoxItem Content="ANGLER-ANGLER: CUSTOM RECOVERY..."/>
+                            <Button x:Name="Btn_flashTWRP" Content="Flash TWRP" HorizontalAlignment="Left" Margin="133,55,0,0" VerticalAlignment="Top" Width="139" ToolTip="Flashes TWRP to your phone."/>
+                            <ComboBox x:Name="twrpBuildList" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top" Width="263" ToolTip="Select the version of TWRP to flash.">
+                                <ComboBoxItem Content="Custom Recovery .img"/>
                             </ComboBox>
-                            <Button x:Name="Btn_bootTWRP" Content="Boot TWRP" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="118" Click="flashTWRP_Click" ToolTip="Flashes TWRP to your phone."/>
+                            <Button x:Name="Btn_bootTWRP" Content="Boot TWRP" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="118" ToolTip="Temporarily boots TWRP on your phone."/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="3. Magisk" HorizontalAlignment="Left" Height="287" Margin="309,10,0,0" VerticalAlignment="Top" Width="283">
                         <Grid>
-                            <Button x:Name="btn_installMagisk" Content="Install" HorizontalAlignment="Left" Margin="146,52,0,0" VerticalAlignment="Top" Width="109"/>
-                            <TextBlock x:Name="tblk_magiskChannel" HorizontalAlignment="Left" Margin="61,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
-                            <TextBlock x:Name="tblk_magiskVersion" HorizontalAlignment="Left" Margin="61,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
-                            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Channel:" VerticalAlignment="Top"/>
-                            <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top"/>
-                            <Button x:Name="Btn_magiskChangelog" Content="Changelog" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Width="116" Click="Btn_magiskChangelog_Click"/>
-                            <Label Content="Magisk Manager" HorizontalAlignment="Left" Margin="0,96,0,0" VerticalAlignment="Top" Background="#FF4CAF50" Width="265"/>
+                            <Button x:Name="Btn_installMagisk" Content="Install" HorizontalAlignment="Left" Margin="146,21,0,0" VerticalAlignment="Top" Width="109"/>
+                            <TextBlock x:Name="Tblk_magiskChannel" HorizontalAlignment="Left" Margin="54,-34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+                            <TextBlock x:Name="Tblk_magiskVersion" HorizontalAlignment="Left" Margin="61,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="12,0,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top"/>
+                            <Button x:Name="Btn_magiskChangelog" Content="Changelog" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="116" Click="Btn_magiskChangelog_Click"/>
+                            <Label Content="Magisk Manager" HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Background="#FF4CAF50" Width="265"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="12,0,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="12,97,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="Tblk_magiskManagerVersion" HorizontalAlignment="Left" Margin="61,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+                            <Button x:Name="Btn_installMagiskManager" Content="Install" HorizontalAlignment="Left" Margin="146,118,0,0" VerticalAlignment="Top" Width="109"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -177,7 +177,7 @@
                 <Grid Background="#FFF7F7F7">
                     <GroupBox x:Name="groupBox1" Header="Backup" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="180" Width="216" IsEnabled="False">
                         <Grid Margin="0">
-                            <Button x:Name="adbBackup" Content="Backup" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Width="185" Click="adbBackup_Click"/>
+                            <Button x:Name="adbBackup" Content="Backup" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Width="185" />
                             <TextBox x:Name="backupName" HorizontalAlignment="Left" Height="23" Margin="52,69,0,0" TextWrapping="Wrap" Text="backup_01" VerticalAlignment="Top" Width="146"/>
                             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
                             <CheckBox x:Name="backupShared" Content="SD Card Contents" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
@@ -198,11 +198,11 @@
                                 <ComboBoxItem Content="System" />
                                 <ComboBoxItem Content="Vendor" />
                             </ComboBox>
-                            <Button x:Name="fastbootFlash" Content="Flash" HorizontalAlignment="Left" Margin="164,33,0,0" VerticalAlignment="Top" Width="145" Click="fastbootFlash_Click" ToolTip="Flashes an image to the selected partition via fastboot."/>
-                            <Button x:Name="fastbootErase" Style="{StaticResource MaterialDesignRaisedLightButton}" Content="Erase" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="145" Click="fastbootErase_Click" ToolTip="Erases selected partition via fastboot."/>
+                            <Button x:Name="fastbootFlash" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Flash" HorizontalAlignment="Left" Margin="164,33,0,0" VerticalAlignment="Top" Width="145" ToolTip="Flashes an image to the selected partition via fastboot."/>
+                            <Button x:Name="fastbootErase" Content="Erase" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="145" ToolTip="Erases selected partition via fastboot."/>
                         </Grid>
                     </GroupBox>
-                    <Button  x:Name="relockBootloader" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Relock the Bootloader" HorizontalAlignment="Left" Margin="279,146,0,0" VerticalAlignment="Top" Width="262" Click="relockBootloader_Click" Height="32" ToolTip="Relocks the bootloader, you must be 100% stock to use it."/>
+                    <Button  x:Name="relockBootloader" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Relock the Bootloader" HorizontalAlignment="Left" Margin="279,146,0,0" VerticalAlignment="Top" Width="262" Height="32" ToolTip="Relocks the bootloader, you must be 100% stock to use it."/>
                     <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="279,183,0,0" TextWrapping="Wrap" Text="You must be 100% stock to use!" VerticalAlignment="Top" Width="262" FontStyle="Italic" TextAlignment="Center"/>
                 </Grid>
             </TabItem>
@@ -217,10 +217,10 @@
                     </GroupBox>
                     <GroupBox x:Name="groupBox10" Header="OTAs" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="132" Width="332">
                         <Grid>
-                            <ComboBox x:Name="otaBuildList" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="300" Height="32">
+                            <ComboBox x:Name="otaBuildList" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="300" Height="32">
                                 <ComboBoxItem Content="Custom OTA Package - Must be Signed!"/>
                             </ComboBox>
-                            <Button x:Name="flashOTA" Content="Flash OTA" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="300" Click="flashOTA_Click" ToolTip="Flashes OTA with the desired options. You will need a stock recovery and unmodified /system to flash."/>
+                            <Button x:Name="flashOTA" Content="Flash OTA" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="300" ToolTip="Flashes OTA with the desired options. You will need a stock recovery and unmodified /system to flash."/>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -229,7 +229,7 @@
                 <Grid Background="#FFF7F7F7">
                     <GroupBox x:Name="groupBox" Header="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="76" Width="332">
                         <Grid x:Name="gEzFactoryOptions" Margin="0">
-                            <CheckBox x:Name="cbFormatUserdataEZ" Content="Format Userdata (Erases everything on your phone)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="300" ToolTip="Erases everything on the internal storage. You may need to do a factory reset if your device is in a bootloop after flashing."/>
+                            <CheckBox x:Name="cbFormatUserdataEZ" Content="Format Userdata (Erases everything on your phone)" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="300" ToolTip="Erases everything on the internal storage. You may need to do a factory reset if your device is in a bootloop after flashing."/>
                         </Grid>
                     </GroupBox>
                     <GroupBox x:Name="groupBox7" Header="Select and Flash" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Height="202" Width="332">
@@ -237,7 +237,7 @@
                             <ComboBox x:Name="stockBuildList" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="300" ToolTip="Select a stock image to restore." Height="30">
                                 <ComboBoxItem Content="Open Downloaded Factory Image"/>
                             </ComboBox>
-                            <Button x:Name="dlStock" Content="Flash Factory Image" HorizontalAlignment="Left" Margin="135,126,0,0" Width="175" Height="32" Click="dlStock_Click" ToolTip="This can be used to fully return to stock or upgrade to the latest factory image without losing root &amp; data." VerticalAlignment="Top"/>
+                            <Button x:Name="dlStock" Content="Flash Factory Image" HorizontalAlignment="Left" Margin="135,42,0,0" Width="175" Height="32"  ToolTip="This can be used to fully return to stock or upgrade to the latest factory image without losing root &amp; data." VerticalAlignment="Top"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox x:Name="groupbox2" Header="" HorizontalAlignment="Left" Margin="347,10,0,0" VerticalAlignment="Top" Height="283" Width="250">
@@ -252,12 +252,12 @@
                             <CheckBox x:Name="cbFormatUserdata" Content="Format Userdata" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" IsChecked="True"/>
                         </Grid>
                     </GroupBox>
-                    <RadioButton x:Name="rbEzFactoryMode" Content="Basic Options" HorizontalAlignment="Left" Margin="20,14,0,0" VerticalAlignment="Top" Foreground="White" Background="White" FontWeight="Bold" IsChecked="True" Checked="rbEzFactoryMode_Checked"/>
-                    <RadioButton x:Name="rbAdvFactoryMode" Content="Advanced Options" HorizontalAlignment="Left" Margin="356,14,0,0" VerticalAlignment="Top" Foreground="White" Background="White" FontWeight="Bold" Checked="rbAdvFactoryMode_Checked"/>
+                    <RadioButton x:Name="rbEzFactoryMode" Content="Basic Options" HorizontalAlignment="Left" Margin="19,17,0,0" VerticalAlignment="Top" Foreground="White" Background="White" FontWeight="Bold" IsChecked="True" />
+                    <RadioButton x:Name="rbAdvFactoryMode" Content="Advanced Options" HorizontalAlignment="Left" Margin="357,17,0,0" VerticalAlignment="Top" Foreground="White" Background="White" FontWeight="Bold" />
                 </Grid>
             </TabItem>
         </TabControl>
-        <ComboBox x:Name="deviceselector" HorizontalAlignment="Left" Margin="392,10,0,0" VerticalAlignment="Top" Width="218" Height="30" SelectionChanged="SelectDeviceInstance">
+        <ComboBox x:Name="deviceselector" HorizontalAlignment="Left" Margin="405,10,0,0" VerticalAlignment="Top" Width="218" Height="34" SelectionChanged="SelectDeviceInstance">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="0,2,0,5" Orientation="Vertical">

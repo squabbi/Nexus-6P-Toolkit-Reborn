@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Nexus_6P_Toolkit_Reborn"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         x:Class="Nexus_6P_Toolkit_Reborn.MainWindow"
         mc:Ignorable="d"
         BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
@@ -169,6 +170,10 @@
                             <TextBlock HorizontalAlignment="Left" Margin="12,97,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top"/>
                             <TextBlock x:Name="Tblk_magiskManagerVersion" HorizontalAlignment="Left" Margin="61,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
                             <Button x:Name="Btn_installMagiskManager" Content="Install" HorizontalAlignment="Left" Margin="146,118,0,0" VerticalAlignment="Top" Width="109"/>
+                            <Button x:Name="Btn_magiskSettings" Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                    HorizontalAlignment="Left" Margin="217,187,0,0" VerticalAlignment="Top" Height="40" Width="40" Click="Btn_magiskSettings_Click">
+                                <materialDesign:PackIcon Kind="Settings" Height="20" Width="20" />
+                            </Button>
                         </Grid>
                     </GroupBox>
                 </Grid>

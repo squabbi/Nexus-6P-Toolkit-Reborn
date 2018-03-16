@@ -15,6 +15,7 @@ using AndroidCtrl.ADB;
 using AndroidCtrl.Tools;
 using AndroidCtrl.Fastboot;
 using System.Windows.Controls;
+using Nexus_6P_Toolkit_Reborn.Resources.Dialogs;
 
 namespace Nexus_6P_Toolkit_Reborn
 {
@@ -215,10 +216,13 @@ namespace Nexus_6P_Toolkit_Reborn
 
         public String UpdateChannel()
         {
-            if (Properties.Settings.Default.UpdateIsBeta == false)         //check for update channel. TODO: Implement custom update channel.
-                return MagiskUpdateStable;
-
-            return MagiskUpdateBeta;
+            switch (Properties.Settings.Default.MagiskChannel)
+            {
+                case 0: return MagiskUpdateStable;
+                case 1: return MagiskUpdateBeta;
+                case 2: return Properties.Settings.Default.MagiskCustomChannelUrl;
+                default: return MagiskUpdateStable;
+            }
         }
 
         public void RefreshMagisk()
@@ -239,9 +243,13 @@ namespace Nexus_6P_Toolkit_Reborn
             magiskManager = JsonConvert.DeserializeObject<MagiskManager>(_magiskManager.ToString());
 
             //update visual items
-            if (Properties.Settings.Default.UpdateIsBeta == false)
-                Tblk_magiskChannel.Text = "Stable";
-            else Tblk_magiskChannel.Text = "Beta";
+            switch (Properties.Settings.Default.MagiskChannel)
+            {
+                case 0: Tblk_magiskChannel.Text = "Stable"; break;
+                case 1: Tblk_magiskChannel.Text = "Beta"; break;
+                case 2: Tblk_magiskChannel.Text = "Custom"; break;
+                default: Tblk_magiskChannel.Text = "Stable"; break;
+            }
 
             Tblk_magiskManagerVersion.Text = magiskManager.Version;
 
@@ -282,6 +290,16 @@ namespace Nexus_6P_Toolkit_Reborn
         {
             ADB.Dispose();
             Fastboot.Dispose();
+        }
+
+        private void Btn_magiskSettings_Click(object sender, RoutedEventArgs e)
+        {
+            MagiskSettingsDialog msd = new MagiskSettingsDialog
+            {
+                Owner = this
+            };
+            msd.ShowDialog();
+            RefreshMagisk();  //Refresh Magisk
         }
     }
 }

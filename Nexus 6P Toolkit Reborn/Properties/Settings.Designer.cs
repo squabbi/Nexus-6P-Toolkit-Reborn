@@ -25,37 +25,25 @@ namespace Nexus_6P_Toolkit_Reborn.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UpdateIsBeta {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int MagiskChannel {
             get {
-                return ((bool)(this["UpdateIsBeta"]));
+                return ((int)(this["MagiskChannel"]));
             }
             set {
-                this["UpdateIsBeta"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CustomChannel {
-            get {
-                return ((bool)(this["CustomChannel"]));
-            }
-            set {
-                this["CustomChannel"] = value;
+                this["MagiskChannel"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CustomChannelUri {
+        public string MagiskCustomChannelUrl {
             get {
-                return ((string)(this["CustomChannelUri"]));
+                return ((string)(this["MagiskCustomChannelUrl"]));
             }
             set {
-                this["CustomChannelUri"] = value;
+                this["MagiskCustomChannelUrl"] = value;
             }
         }
     }

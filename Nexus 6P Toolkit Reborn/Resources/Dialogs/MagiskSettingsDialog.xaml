@@ -1,0 +1,24 @@
+﻿<Controls:MetroWindow x:Class="Nexus_6P_Toolkit_Reborn.Resources.Dialogs.MagiskSettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nexus_6P_Toolkit_Reborn.Resources.Dialogs"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Magisk Settings" Height="146" Width="358" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing">
+    <Grid>
+        <Button x:Name="Btn_saveSettings" Content="Save" HorizontalAlignment="Left" Margin="267,69,0,0" VerticalAlignment="Top" Width="75" Click="Btn_saveSettings_Click"/>
+        <Button x:Name="Btn_cancelSettings" Content="Cancel" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Magisk Update Channel:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Cmbox_magiskUpdateChannel" HorizontalAlignment="Left" Margin="154,8,0,0" VerticalAlignment="Top" Width="188">
+            <ComboBoxItem Content="Stable"/>
+            <ComboBoxItem Content="Beta"/>
+            <ComboBoxItem Content="Custom"/>
+        </ComboBox>
+        <TextBox Name="Txtbox_customUpdateUrl" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" ToolTip="Gekko" VerticalAlignment="Top" Width="332"
+            materialDesign:HintAssist.Hint="Custom update URL" Visibility="Hidden"/>
+    </Grid>
+</Controls:MetroWindow>
